@@ -1,0 +1,21 @@
+<div class="container mx-auto text-center mb-16">
+  <div class="mx-4 md:mx-0">
+    <app-header />
+    <app-search
+      (sortEvent)="sortSearchEvent($event)"
+      (directionEvent)="directionSearchEvent($event)"
+    />
+
+    @if (loading) {
+    <div class="mt-8 text-center">
+      <app-loader />
+    </div>
+    } @else {
+    <section class="mt-8 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+      @for (pokemon of pokemons; track pokemon.id) {
+      <app-pokemon-card [pokemon]="pokemon" />
+      }
+    </section>
+    }
+  </div>
+</div>

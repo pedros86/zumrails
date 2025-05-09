@@ -1,0 +1,51 @@
+<div class="bg-white border p-4 border-gray-100 rounded-md shadow-sm">
+  <div class="flex w-full justify-between">
+    <div class="text-left">
+      <div>
+        @if (pokemon?.types?.length) {
+        <span
+          class="bg-slate-700 text-white px-2 py-1 text-xs rounded-md"
+          [attr.style]="`background-color: ${getColorType()}`"
+          >{{ pokemon?.types?.at(0)?.type?.name }}</span
+        >
+        }
+      </div>
+      <div class="mt-1">
+        <h2 class="capitalize font-semibold text-lg text-slate-800">
+          {{ pokemon?.name }}
+        </h2>
+      </div>
+      <div class="text-xs opacity-50 mt-1">#{{ pokemon?.id }}</div>
+    </div>
+    <div>
+      <img
+        class="w-16 h-16 bg-slate-100 rounded-full"
+        [src]="pokemon?.sprites?.front_default"
+        [alt]="pokemon?.name"
+      />
+    </div>
+  </div>
+
+  <div class="flex w-full justify-around gap-4 mt-4">
+    <div class="w-full bg-slate-100 p-3 rounded-md">
+      <div class="text-sm text-gray-500">Wins</div>
+      <strong class="text-lg text-green-700">{{ pokemon?.wins }}</strong>
+    </div>
+    <div class="w-full bg-slate-100 p-3 rounded-md">
+      <div class="text-sm text-gray-500">Losses</div>
+      <strong class="text-lg text-red-700">{{ pokemon?.losses }}</strong>
+    </div>
+    <div class="w-full bg-slate-100 p-3 rounded-md">
+      <div class="text-sm text-gray-500">Ties</div>
+      <strong class="text-lg text-blue-700">{{ pokemon?.ties }}</strong>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <div class="flex justify-between text-xs opacity-50 mb-1">
+      <div>Win rate</div>
+      <div>{{ getProgress() }}%</div>
+    </div>
+    <app-progress-bar [progress]="getProgress()" />
+  </div>
+</div>

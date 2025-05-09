@@ -1,0 +1,30 @@
+<section class="bg-white p-4 mt-8">
+  <div class="flex justify-center md:w-[25rem] mx-auto gap-6">
+    <div class="w-[50%]">
+      <label for="sort" class="block text-start">Sort by</label>
+      <select
+        [(ngModel)]="sortFilter"
+        (ngModelChange)="onSortChange()"
+        id="sort"
+        class="w-full border border-gray-200 px-3 py-2 rounded-sm text-sm"
+      >
+        @for (item of sortOptions; track $index) {
+          <option [value]="item">{{ sortBy[item] }}</option>
+        }
+      </select>
+    </div>
+    <div class="w-[50%]">
+      <label for="direction" class="block text-start">Direction</label>
+      <select
+        [(ngModel)]="directionFilter"
+        (ngModelChange)="onDirectionChange()"
+        id="direction"
+        class="w-full border border-gray-200 px-3 py-2 rounded-sm text-sm"
+      >
+      @for (item of directionOptions; track $index) {
+        <option [value]="item">{{ direction[item] }}</option>
+      }
+      </select>
+    </div>
+  </div>
+</section>
